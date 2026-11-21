@@ -468,7 +468,10 @@ footer .credits {
   border-radius: 6px;
 }
 .panel:first-child .inputs {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(
+      0,
+      1fr
+    );
 }
 .panel:first-child .wide {
   grid-column: auto;
