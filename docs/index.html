@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-app="pg-latency-lab">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Compare PostgreSQL benchmark runs | PG Latency Lab</title>
   <meta name="description" content="Turn timing CSVs or transaction logs into percentile summaries, baseline comparisons, and downloadable results.">
   <link rel="canonical" href="https://musabukhari237.github.io/pg-latency-lab/">
@@ -17,22 +17,26 @@
   <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="app.css">
   <script type="module" src="app.mjs"></script>
+  <script type="module" src="experience.mjs"></script>
+  <script type="module" src="experience.mjs"></script>
 </head>
 <body>
-<header><a href="./" class="brand"><img src="logo.svg" alt="">PG Latency Lab</a><a href="https://github.com/MusaBukhari237/pg-latency-lab" class="small-link">GitHub repository</a></header>
+<a class="skip" href="#workspace">Skip to workspace</a>
+<header><a class="brand" href="./"><img src="logo.svg" alt="">PG Latency Lab</a><nav aria-label="Main"><a href="#guide">How to use</a><a class="repo" href="https://github.com/MusaBukhari237/pg-latency-lab">GitHub ↗</a></nav></header>
 <main>
-<section class="lead"><h1>Compare PostgreSQL benchmark runs</h1><p>Turn timing CSVs or transaction logs into percentile summaries, baseline comparisons, and downloadable results.</p></section>
-<div class="workspace">
+<section class="masthead"><div class="intro"><p class="category">Performance console</p><h1>Watch the long tail.</h1><p class="description">Compare PostgreSQL benchmark runs with percentile summaries and a baseline that you choose.</p></div><figure class="scene diagram"><img src="scene.svg" alt="Performance console process illustration" width="440" height="260"></figure></section>
+<div class="workspace" id="workspace">
   <section class="panel" aria-labelledby="settings"><h2 id="settings">Measurement input</h2>
     <div class="inputs"><label>Input format<select id="format"><option value="csv">Timing CSV</option><option value="pgbench">pgbench transaction log</option></select></label><label>Log run name<input id="label" value="Candidate" maxlength="80"></label><label class="wide">Paste measurements<textarea id="source" rows="9" maxlength="1500000" placeholder="run,duration_ms" spellcheck="false"></textarea></label><label>Baseline<select id="baseline"><option value="">First run</option></select></label></div>
     <div class="actions"><button type="button" id="run">Load and compare</button><button type="button" id="sample" class="quiet">Load benchmark example</button></div>
     <small>Each load replaces the current data. A timing CSV can contain multiple named runs.</small>
   </section>
-  <section class="panel" aria-labelledby="result-title"><h2 id="result-title">Run comparison</h2>
+  <section class="panel" aria-labelledby="result-title" id="output-panel"><h2 id="result-title" tabindex="-1">Run comparison</h2><p class="result-status" id="result-status" aria-live="polite">Ready when you are</p>
     <div class="result" id="result"><p class="result-summary" aria-live="polite">Load an example or paste your own input.</p></div>
   </section>
 </div>
+<details class="guide" id="guide"><summary>How to use PG Latency Lab</summary><ol><li>Paste timing CSVs or pgbench transaction logs.</li><li>Load the measurements and choose a baseline.</li><li>Review the percentiles and download a summary.</li></ol></details>
 </main>
-<footer><a class="small-link" href="https://github.com/MusaBukhari237/pg-latency-lab/blob/main/LICENSE">MIT license</a></footer>
+<footer><span>PG Latency Lab · <a href="https://github.com/MusaBukhari237/pg-latency-lab/blob/main/LICENSE">MIT licensed</a></span><span class="credits"><a href="https://www.leadceleris.com/">LeadCeleris</a><a href="https://www.aifficiento.biz/">AIFFICIENTO</a></span></footer>
 </body>
 </html>
